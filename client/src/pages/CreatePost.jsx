@@ -20,7 +20,7 @@ const CreatePost = () => {
       try {
         setGeneratingImg(true);
 
-        const response = await fetch('http://localhost:8080/api/v1/visionaryx', {
+        const response = await fetch('http://localhost:8080/api/v1/visionaryx', { //https://visionaryx.onrender.com/api/v1/visionaryx
           method:'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -28,7 +28,7 @@ const CreatePost = () => {
           body: JSON.stringify({ prompt: form.prompt }),
         })
 
-        const data = await response.json();
+        const data = await response.json();     
 
         setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}`});
       } catch (error) {
@@ -48,12 +48,12 @@ const CreatePost = () => {
       setLoading(true);
 
       try {
-        const response = await fetch('http://localhost:8080/api/v1/post', {
+        const response = await fetch('http://localhost:8080/api/v1/post', { //https://visionaryx.onrender.com/api/v1/post
           method:'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(form)
+          body: JSON.stringify(form),
         })
 
         await response.json();
